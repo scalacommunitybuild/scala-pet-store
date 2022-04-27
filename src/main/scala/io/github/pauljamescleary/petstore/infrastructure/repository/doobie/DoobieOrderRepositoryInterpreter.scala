@@ -36,7 +36,7 @@ private object OrderSQL {
   """.update
 }
 
-class DoobieOrderRepositoryInterpreter[F[_]: Bracket[?[_], Throwable]](val xa: Transactor[F])
+class DoobieOrderRepositoryInterpreter[F[_]: Bracket[*[_], Throwable]](val xa: Transactor[F])
 extends OrderRepositoryAlgebra[F] {
   import OrderSQL._
 
@@ -53,6 +53,6 @@ extends OrderRepositoryAlgebra[F] {
 }
 
 object DoobieOrderRepositoryInterpreter {
-  def apply[F[_]: Bracket[?[_], Throwable]](xa: Transactor[F]): DoobieOrderRepositoryInterpreter[F] =
+  def apply[F[_]: Bracket[*[_], Throwable]](xa: Transactor[F]): DoobieOrderRepositoryInterpreter[F] =
     new DoobieOrderRepositoryInterpreter(xa)
 }

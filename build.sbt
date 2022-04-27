@@ -13,7 +13,7 @@ val DoobieVersion          = "0.7.0"
 val EnumeratumCirceVersion = "1.5.21"
 val H2Version              = "1.4.199"
 val Http4sVersion          = "0.20.3"
-val KindProjectorVersion   = "0.9.9"
+val KindProjectorVersion   = "0.13.2"
 val LogbackVersion         = "1.2.3"
 val ScalaCheckVersion      = "1.14.0"
 val ScalaTestVersion       = "3.0.7"
@@ -112,7 +112,7 @@ def scalacOptionsForVersion(version: String): Seq[String] = {
 
 scalacOptions ++= scalacOptionsForVersion(scalaVersion.value)
 
-addCompilerPlugin("org.spire-math" %% "kind-projector" % KindProjectorVersion cross CrossVersion.binary)
+addCompilerPlugin("org.typelevel" %% "kind-projector" % KindProjectorVersion cross CrossVersion.full)
 
 // Filter out compiler flags to make the repl experience functional...
 val badConsoleFlags = Seq("-Xfatal-warnings", "-Ywarn-unused:imports")
